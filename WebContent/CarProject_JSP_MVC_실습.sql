@@ -1,3 +1,6 @@
+
+select * from MEMBER;
+
 -- 회원 테이블 member 생성
 CREATE TABLE MEMBER(
     id varchar2(12) not null primary key,
