@@ -16,13 +16,13 @@ alter table member
 add address varchar2(1000);
 
 alter table member
-add email varchar2(100);
+add email varchar2(100); -- 추가함
 
 alter table member
-add tel varchar2(100);
+add tel varchar2(100); -- 추가함
 
 alter table member
-add hp varchar2(100);
+add hp varchar2(100); -- 추가함
 
 -- 만들어진 member 테이블 구조 보기
 desc member;
