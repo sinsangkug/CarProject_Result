@@ -294,9 +294,9 @@ public class CarDAO {
 				
 				//SELECT문
 				//설명 : 예약한 날짜가 현재 날짜 보다 크고? 예약당시 입력한 휴대폰번호와 비밀번호로 예약한 렌트 정보들을 조회하는데..
-				//		carorder테이블과 carlist테이블을 연결(NATURAL JOIN)해서
+				//		NON_CARORDER테이블과 carlist테이블을 연결(NATURAL JOIN)해서
 				//		정보들을 조회 합니다.
-				String sql = "SELECT * FROM carorder NATURAL JOIN carlist "
+				String sql = "SELECT * FROM NON_CARORDER NATURAL JOIN carlist "
 							+ "WHERE sysdate < TO_DATE(carbegindate, 'YYYY-MM-DD') AND "
 							+ "memberphone=? AND memberpass=?";
 				
@@ -309,7 +309,7 @@ public class CarDAO {
 				while (rs.next()) {
 					
 					vo = new CarConfirmVo();
-					vo.setOrderid(rs.getInt("ORDERID")); //주문 ID
+					vo.setOrderid(rs.getInt("non_orderid")); //주문 ID
 					vo.setCarqty(rs.getInt("CARQTY")); //대여차량 갯수
 					vo.setCarreserveday(rs.getInt(4)); //대여일수
 					vo.setCarbegindate(rs.getString(5)); //대여시작날짜 
@@ -341,7 +341,7 @@ public class CarDAO {
 			try {
 				con = ds.getConnection();
 				
-				String sql = "select * from carorder where orderid = '"+orderid+"'";
+				String sql = "select * from non_carorder where non_orderid = '"+orderid+"'";
 				
 				pstmt = con.prepareStatement(sql);
 				
@@ -379,10 +379,10 @@ public class CarDAO {
 				con = ds.getConnection();
 				//UPDATE구문
 				//->예약한 아이디와 예약당시 입력했던 비밀번호와 일치하는 하나의 예약정보를 수정
-				String sql = "UPDATE carorder SET"
+				String sql = "UPDATE non_carorder SET"
 							+ " carbegindate=?, carreserveday=?, carins=?,"
 							+ " carwifi=?, carnave=?, carbabyseat=?, carqty=?"
-							+ " WHERE orderid=? AND memberpass=?";
+							+ " WHERE non_orderid=? AND memberpass=?";
 				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, request.getParameter("carbegindate"));
@@ -417,7 +417,7 @@ public class CarDAO {
 				con = ds.getConnection();
 				//DELETE구문
 				//->예약한 아이디와 예약당시 입력했던 비밀번호와 일치하는 하나의 예약정보를 삭제
-				String sql = "DELETE FROM carorder WHERE orderid=? AND memberpass=?";
+				String sql = "DELETE FROM non_carorder WHERE non_orderid=? AND memberpass=?";
 							
 				
 				pstmt = con.prepareStatement(sql);

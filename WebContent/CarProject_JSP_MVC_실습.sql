@@ -1,5 +1,8 @@
 
-select * from MEMBER;
+
+select * from NON_CARORDER;
+
+
 
 -- 회원 테이블 member 생성
 CREATE TABLE MEMBER(
@@ -172,6 +175,8 @@ COMMIT;
 --  carbabyseat;//렌트시 베이비시트적용 일수 저장 
 --  memberphone;// 비회원으로 렌트할 사람 폰번호 저장
 --  memberpass;// 비회원으로 렌트시 주문 패스워드 저장
+
+select * from non_carorder;
 
 Create Table non_carorder(
  non_orderid number PRIMARY KEY,

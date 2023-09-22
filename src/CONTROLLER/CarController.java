@@ -275,7 +275,6 @@ public class CarController extends HttpServlet{
 			nextPage = "/CarMain.jsp";
 
 		}else if(action.equals("/CarReserveConfirm.do")) {
-			
 			//요청한 값 얻기
 			//입력한 휴대폰번호, 비밀번호
 			String memberphone = request.getParameter("memberphone");
@@ -302,7 +301,7 @@ public class CarController extends HttpServlet{
 			int orderid = Integer.parseInt(request.getParameter("orderid"));
 			String carimg = request.getParameter("carimg");
 			String memberphone = request.getParameter("memberphone");
-//			String memberpass = request.getParameter("memberpass");
+//			String memberpass = request.getParameter("memberpass"); 
 			
 			//예약 아이디를 이용해 예약한 정보를 DB에서 조회하기 위해
 			//CarDAO객체의 getOneOrder메소드 호출할때 매개변수로 orderid를 전달 하여 조회 해 오자
@@ -322,6 +321,8 @@ public class CarController extends HttpServlet{
 			//DB에 UPDATE시키기 위해 CarDAO객체의 carOrderUpdate메소드 호출할때
 			//request객체 메모리를 전달해 UPDATE시키자
 			int result = cardao.carOrderUpdate(request);
+			
+			
 //			String memberpass = request.getParameter("memberpass");
 			String memberphone = request.getParameter("memberphone");
 			int orderid = Integer.parseInt(request.getParameter("orderid"));
